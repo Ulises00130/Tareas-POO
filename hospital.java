@@ -1,8 +1,8 @@
 package hospital;
 
-import consulta.Consulta;
-import consultorio.Consultorio;
-import medico.Medico;
+import consultas.Consulta;
+import consultorios.Consultorio;
+import medicos.Medico;
 import pacientes.Paciente;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -61,7 +61,18 @@ public class Hospital {
         for(Paciente paciente : this.listaPacientes){
             System.out.println(paciente.mostrarDatos());
         }
-
+    }
+    public void mostrarMedicos(){
+        System.out.println("\n Medicos del hospital");
+        for(Medico medico : this.listaMedicos){
+            System.out.println(medico.mostrarDatosM());
+        }
+    }
+    public void mostrarConsultorios(){
+        System.out.println("\n Consultorios del hospital");
+        for(Consultorio consultorio : this.listaConsultorios){
+            System.out.println(consultorio.mostrarDatos());
+        }
     }
 
     public String generarIdPaciente() {
@@ -70,7 +81,7 @@ public class Hospital {
         int anoActual=fecha.getYear();
         int mesActual= fecha.getMonthValue();
         int longitudPacientesMasUno=this.listaPacientes.size();
-        int numeroAleatorio= random.nextInt(1,1000);
+        int numeroAleatorio= random.nextInt(100000);
         String id=String.format("P%d%d%d%d",anoActual,mesActual,longitudPacientesMasUno,numeroAleatorio);
         return id;
     }
@@ -88,41 +99,54 @@ public class Hospital {
         }
         System.out.println("Paciente no encontrado");
     }
-    public void mostrarMedicos(){
-        System.out.println("\n Medicos del hospital");
-        for(Medico medico : this.listaMedicos){
-            System.out.println(medico.mostrarDatos());
+    public void mostrarMedicoPorId(String id){
+        for(Medico medico:this.listaMedicos){
+            if(medico.getId().equals(id)){
+                System.out.println(medico.mostrarDatosM());
+                return;
+            }
         }
-
     }
-
-    public String generarIdMedico() {
-        Random random = new Random();
-        LocalDate fecha= LocalDate.now();
-        int anoActual=fecha.getYear();
-        int mesActual= fecha.getMonthValue();
-        int longitudMedicoMasUno=this.listaMedicos.size();
-        int numeroAleatorio= random.nextInt(50,700000);
-        String id=String.format("M%d%d%d%d",anoActual,mesActual,longitudMedicoMasUno,numeroAleatorio);
-        return id;
-    }
-
-    public void mostrarConsltorio(){
-        System.out.println("\n Consultorio del hospital");
-        for(Consultorio consultorio : this.listaConsultorios){
-            System.out.println(consultorio.mostrarDatos());
+    public void mostrarConsultorioPorId(String id){
+        for(Consultorio consultorio:this.listaConsultorios){
+            if(consultorio.getId().equals(id)){
+                System.out.println(consultorio.mostrarDatos());
+                return;
+            }
         }
-
     }
 
-    public String generarIdConsultorio() {
+    public String generarIdConsultorio (){
         Random random = new Random();
+        int longitudConsultorioMasUno =this.listaConsultorios.size();
         LocalDate fecha= LocalDate.now();
-        int anoActual=fecha.getYear();
-        int longitudConsultoriosMasUno=this.listaConsultorios.size();
-        int numeroAleatorio= random.nextInt(1,500000);
-        String id=String.format("C%d%d%d%d",anoActual,longitudConsultoriosMasUno,numeroAleatorio);
-        return id;
+        int diaActual = fecha.getDayOfMonth();
+        int anoActual= fecha.getYear();
+        int numeroAleatorio= random.nextInt(500000);
+
+        String idConsultorio = String.format("C%d%d%d%d",longitudConsultorioMasUno,diaActual,anoActual,numeroAleatorio);
+        return idConsultorio;
     }
+
+    public String generarIdMedico(String apellido, String anoNacimiento) {
+        Random random = new Random();
+        LocalDate fechaActual = LocalDate.now();
+        int anoActual = fechaActual.getYear();
+        int numeroAleatorio = 50 + random.nextInt(700000 - 50);
+        int longitudMedicosMasUno = listaMedicos.size() + 1;
+        String primerasLetrasApellido;
+        if (apellido.length() >= 2) {
+            primerasLetrasApellido = apellido.substring(0, 2).toUpperCase();
+        } else {
+            primerasLetrasApellido = apellido.toUpperCase();
+        }
+        String ultimoDigitoAnoNacimiento = anoNacimiento.substring(anoNacimiento.length() - 1);
+        return String.format("M%s%s%d%d%d",
+                primerasLetrasApellido,
+                ultimoDigitoAnoNacimiento,
+                anoActual,
+                numeroAleatorio,
+                longitudMedicosMasUno);
+    }
+
 }
-

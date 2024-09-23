@@ -1,14 +1,14 @@
-package medico;
+package medicos;
 
 public class Medico {
-    public static int id;
-    public static String nombre;
+    public String id;
+    public String nombre;
     public String apellidos;
     public String fechaNacimiento;
     private String telefono;
     private String rfc;
 
-    public Medico(int id, String nombre, String apellidos, String fechaNacimiento, String telefono, String rfc) {
+    public Medico(String id, String nombre, String apellidos, String fechaNacimiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -17,11 +17,7 @@ public class Medico {
         this.rfc = rfc;
     }
 
-    public Medico(String idMedico, String nombreMedico, String apellidoMedico, String fechaNacimientoM, String numeroTelefonoM, char sexoM) {
-
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -43,12 +39,9 @@ public class Medico {
 
     public String getRfc() {
         return rfc;
-    }
-
-    public String mostrarDatos(){
-        String datos= String.format("/n id=%s,nombre:%s,apellido:%s,fecha de nacimiento:%s,telefono:%s",id,nombre
-                ,apellidos,fechaNacimiento,telefono);
+}
+    public String mostrarDatosM(){
+        String datos = String.format("id=%s, nombre=%s, año de nacimiento=%s", id, apellidos, fechaNacimiento);
         return datos;
     }
-
 }

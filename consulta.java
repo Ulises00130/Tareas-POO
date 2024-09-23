@@ -1,8 +1,7 @@
-package consulta;
+package consultas;
 
-import consultorio.Consultorio;
-import medico.Medico;
-import medico.Medico;
+import consultorios.Consultorio;
+import medicos.Medico;
 import pacientes.Paciente;
 
 public class Consulta {
