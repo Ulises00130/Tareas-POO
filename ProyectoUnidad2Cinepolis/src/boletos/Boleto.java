@@ -1,57 +1,52 @@
 package boletos;
 
+import peliculas.Pelicula;
+import salas.Sala;
+import usuarios.clientes.Cliente;
+
 public class Boleto {
-    private String id;
-    private String peliculaId;
-    private String salaId;
-    public double precio;
-    private String asientoId;
-    public String tipoAsiento;
-    public String clienteId;
-    private boolean tieneDescuento;
+    String id;
+    Pelicula pelicula;
+    Sala sala;
+    double precio;
+    String tipoAsiento;
+    Cliente cliente;
+    boolean tieneDescuento;
 
-    public Boleto(String id, String peliculaId, String salaId, double precio, String asientoId, String tipoAsiento, String clienteId, boolean tieneDescuento) {
+
+    public Boleto(String id, Pelicula pelicula, String tipoAsiento, double precio) {
         this.id = id;
-        this.peliculaId = peliculaId;
-        this.salaId = salaId;
-        this.precio = precio;
-        this.asientoId = asientoId;
+        this.pelicula = pelicula;
         this.tipoAsiento = tipoAsiento;
-        this.clienteId = clienteId;
-        this.tieneDescuento = tieneDescuento;
-
+        this.precio = precio;
     }
 
+    // Getters
     public String getId() {
         return id;
     }
 
-    public String getPeliculaId() {
-        return peliculaId;
+    public Pelicula getPelicula() {
+        return pelicula;
     }
 
-    public String getSalaId() {
-        return salaId;
+    public Sala getSala() {
+        return sala;
     }
 
     public double getPrecio() {
         return precio;
     }
 
-    public String getAsientoId() {
-        return asientoId;
-    }
-
     public String getTipoAsiento() {
         return tipoAsiento;
     }
 
-    public String getClienteId() {
-        return clienteId;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public boolean TieneDescuento() {
+    public boolean isTieneDescuento() {
         return tieneDescuento;
     }
-
 }

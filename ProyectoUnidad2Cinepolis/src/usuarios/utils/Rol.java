@@ -5,5 +5,7 @@ public enum Rol {
     ADMINISTRADOR,
     VIP,
     PREMIUM,
-    NORMAL
+    NORMAL,
+    OCUPADO,
+    DISPONIBLE,
 }

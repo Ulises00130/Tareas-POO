@@ -1,22 +1,29 @@
 package dulceria;
 
 public class Producto {
-    public int idProducto;
+    public String idProducto;
     public String nombre;
     public Double precio;
 
-    public Producto(int idProducto, String nombre, Double precio) {
+    public Producto(String idProducto, String nombre, Double precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
     }
 
-    public int getIdProducto() {
+    public void mostrarProducto() {
+        System.out.println("idProducto = " + idProducto);
+        System.out.println("nombre = " + nombre);
+        System.out.println("precio = " + precio);
+    }
+
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public String setIdProducto(String idProducto) {
         this.idProducto = idProducto;
+        return idProducto;
     }
 
     public String getNombre() {

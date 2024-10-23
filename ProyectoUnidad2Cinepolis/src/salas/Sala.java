@@ -1,156 +1,170 @@
 package salas;
 
-import catalogopeliculas.Pelicula;
+import java.util.ArrayList;
+
+import cine.Horarios;
+import peliculas.Pelicula;
 import usuarios.utils.Rol;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Sala {
-    private int numeroSala;
-    private int capacidad;
+    private Asiento[][] asientos;
     private int filas;
     private int columnas;
-    private List<Asiento> asientos;
-    private Pelicula pelicula;
+    private String salaId;
+    private Pelicula peliculaActual;
+    private ArrayList<Horarios> horarios;
 
-    // Getter y Setter para la película
-    public Pelicula getPelicula() {
-        return pelicula;
-    }
-
-    public void setPelicula(Pelicula pelicula) {
-        this.pelicula = pelicula;
-    }
-
-    public Sala(int numeroSala, int filas, int columnas,int filasVIP, int filasPremium) {
-        this.numeroSala = numeroSala;
+    public Sala(String salaId, int filas, int columnas) {
+        this.salaId = salaId;
         this.filas = filas;
         this.columnas = columnas;
-        this.capacidad = filas * columnas;
-        this.asientos = new ArrayList<>();
-        inicializarAsientos(filasVIP, filasPremium);
+        this.asientos = new Asiento[filas][columnas];
+        this.horarios = new ArrayList<>();
+        inicializarAsientos();
     }
 
-    public void setNumeroSala(int numeroSala) {
-        this.numeroSala = numeroSala;
+    public int getCapacidad (){
+        return filas *columnas;
     }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
+    public boolean verificarDisponibilidadAsiento(String asientoId) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Asiento asiento = asientos[i][j];
+
+                // Comparamos el ID del asiento con el ID proporcionado
+                if (asiento.id.equals(asientoId)) {
+                    // Verificamos si el asiento está disponible
+                    return asiento.estado == Rol.DISPONIBLE;
+                }
+            }
+        }        return false;
+    }
+    public void ocuparAsiento(String asientoId) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Asiento asiento = asientos[i][j];
+                
+                if (asiento.id.equals(asientoId)) {
+                    asiento.estado = Rol.OCUPADO;
+                    System.out.println("El asiento " + asientoId + " ha sido marcado como ocupado.");
+                    return;
+                }
+            }
+        }
+        System.out.println("El asiento " + asientoId + " no existe.");
     }
 
-    public int getFilas() {
-        return filas;
+    public Asiento buscarAsientoPorId(String asientoId) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Asiento asiento = asientos[i][j];
+                if (asiento.id.equals(asientoId)) {
+                    return asiento;  // Retorna el asiento encontrado
+                }
+            }
+        }
+        return null;  // Si no se encuentra el asiento
     }
+    
 
-    public void setFilas(int filas) {
-        this.filas = filas;
-    }
+    private void inicializarAsientos() {
+        char filaLetra = 'A';  // Letra para las filas
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                String id = filaLetra + Integer.toString(j + 1);
+                Rol categoria;
 
-    public int getColumnas() {
-        return columnas;
-    }
-
-    public void setColumnas(int columnas) {
-        this.columnas = columnas;
-    }
-
-    public List<Asiento> getAsientos() {
-        return asientos;
-    }
-
-    public void setAsientos(List<Asiento> asientos) {
-        this.asientos = asientos;
-    }
-
-    private void inicializarAsientos(int filasVIP, int filasPremium) {
-        for (int fila = 1; fila <= filas; fila++) {
-            char letraFila = (char) ('A' + (fila - 1));
-            for (int columna = 1; columna <= columnas; columna++) {
-                Rol tipoAsiento;
-                // Asignar el tipo de asiento según las filas indicadas
-                if (fila <= filasVIP) {
-                    tipoAsiento = Rol.VIP;
-                } else if (fila <= filasPremium + filasVIP) {
-                    tipoAsiento = Rol.PREMIUM;
+                // Categorizar los asientos según la fila
+                if (i < 2) {
+                    categoria = Rol.VIP;  
+                } else if (i < 5) {
+                    categoria = Rol.PREMIUM;  
                 } else {
-                    tipoAsiento = Rol.NORMAL;
+                    categoria = Rol.NORMAL;  
                 }
-                String idAsiento = letraFila + String.valueOf(columna);
-                Asiento asiento = new Asiento(idAsiento, fila, columna, tipoAsiento);
-                asientos.add(asiento);  // Agregar asiento a la lista
+
+                // Crear un nuevo asiento
+                asientos[i][j] = new Asiento(id, categoria);
+            }
+            filaLetra++;
+        }
+    }
+      public void asignarPelicula(Pelicula pelicula) {
+        this.peliculaActual = pelicula;
+    }
+   
+
+    public void agregarHorario(Horarios horario) {
+        this.horarios.add(horario);
+    }
+
+    public void mostrarHorarios() {
+        System.out.println("Horarios disponibles en la sala: " + salaId + ":");
+        if (horarios.isEmpty()) {
+            System.out.println("No hay horarios asignados.");
+        } else {
+            for (Horarios horario : horarios) {
+                System.out.println(horario.getHorario()); 
             }
         }
     }
 
-    public int getCapacidad() {
-        return capacidad;
-    }
 
-    public int getNumeroSala() {
-        return numeroSala;
-    }
-
-
-
-    public double calcularCostoTotalVIP() {
-        double total = 0;
-        for (Asiento asiento : asientos) {
-            if (asiento.getTipo().equals(Rol.VIP)) {
-                total += asiento.getPrecio(); // Precio es 400 para VIP
-            }
-        }
-        return total;
-    }
-
-    public double calcularCostoTotalPremium() {
-        double total = 0;
-        for (Asiento asiento : asientos) {
-            if (asiento.getTipo().equals(Rol.PREMIUM)) {
-                total += asiento.getPrecio(); // Precio es 200 para Premium
-            }
-        }
-        return total;
-    }
-
-
-    public void mostrarMapaAsientos() {
-        System.out.println("Mapa de asientos (D = Disponible, R = Reservado):\n");
-        // Recorre las filas
-        for (int fila = 1; fila <= filas; fila++) {
-            char letraFila = (char) ('A' + (fila - 1));
-
-            System.out.print(letraFila + " ");
-
-            for (int columna = 1; columna <= columnas; columna++) {
-                String idAsiento = letraFila + String.valueOf(columna);
-                Asiento asiento = buscarAsientoPorId(idAsiento);
+    public void mostrarAsientos() {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Asiento asiento = asientos[i][j];
                 if (asiento != null) {
-                    if (asiento.getEstado().equals("Disponible")) {
-                        System.out.print("[D] ");
-                    } else {
-                        System.out.print("[R] ");
-                    }
+                    String estado = asiento.estado == Rol.OCUPADO ? "Ocupado" : "Disponible";
+                    String categoria = asiento.categoria.toString();
+                    System.out.print(asiento.id + "(" + estado + ", " + categoria + ") ");
+                } else {
+                    System.out.print("Asiento no asignado ");
                 }
             }
-            System.out.println();  // Salto de línea para la siguiente fila
+            System.out.println();  
         }
-        System.out.println();  // Salto de línea final
+    }
+    public void mostrarPeliculaActual() {
+        if (peliculaActual != null) {
+            System.out.println("Película actual en la " + salaId + ": " + peliculaActual.getTitulo());
+        } else {
+            System.out.println("No hay ninguna película asignada a esta sala.");
+        }
     }
 
-    public Asiento buscarAsientoPorId(String idAsiento) {
-        for (Asiento asiento : asientos) {
-            if (asiento.getId().equals(idAsiento)) {
-                return asiento;
-            }
+    public class Asiento {
+        private String id;
+        private Rol estado;
+        private Rol categoria;
+
+        public Asiento(String id, Rol categoria) {
+            this.id = id;
+            this.categoria = categoria;
+            this.estado = Rol.DISPONIBLE;  // Inicialmente, el asiento está disponible
         }
-        return null;
+        public Rol getCategoria() {
+            return categoria;
+        }
     }
 
+
+    public String getSalaId() {
+        return salaId;
+    
+}
+public ArrayList<Horarios> getHorarios() {
+    return horarios;
 }
 
+public Pelicula getPeliculaActual() {
+    return peliculaActual;
+}
+ 
+
+
+
+}

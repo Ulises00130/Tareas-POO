@@ -1,83 +1,114 @@
 package menu;
-
 import cine.Cine;
-import dulceria.Dulceria;
-import salas.Sala;
-import usuarios.clientes.Cliente;
+import dulceria.Producto;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import boletos.Reservacion;
+import salas.Sala;
+import usuarios.clientes.Cliente;
+
 public class MenuCliente {
+    
     private Scanner scanner = new Scanner(System.in);
-    private Cine cine ;
-    private Sala sala;
+    private Cine cine = new Cine();
 
-
-
-    // Modificación: Agregar un constructor que reciba la instancia de Cine
     public MenuCliente(Cine cine) {
-        this.cine = cine; // Guardamos la instancia de Cine
+        this.cine = cine;
     }
 
-
-    public void menuCliente() {
-        Dulceria dulceria = new Dulceria();
+    public void MostrarMenuCliente() {
+    
         int opcion = 0;
         while (opcion != 5) {
-            System.out.println("\nMenú Cliente:");
-            System.out.println("1. Registrarse como cliente");
-            System.out.println("2. Comprar boletos");
-            System.out.println("3. Ver películas en cartelera");
-            System.out.println("4. Comprar en dulcería");
-            System.out.println("5. Salir");
+            System.out.println("Menu Cliente");
+           System.out.println("1.Ver cartelera de peliculas  ");
+            System.out.println("2.comprar boletos ");
+            System.out.println("3.Dulceria ");
+            System.out.println("4.Pagar ");
+            System.out.println("5.Salir ");
+            System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine();
 
-            switch (opcion) {
-                case 1:
-                    registrarCliente();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    cine.mostrarPeliculasEnCartelera();
-                    break;
-                case 4:
-                    dulceria.comprarProductos();
-                    break;
-                case 5:
-                    System.out.println("Saliendo del menú cliente...");
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
-                    break;
+             switch (opcion) {
+        case 1:
+            System.out.print("Catalogo de peliculas ");
+            cine.mostrarPeliculas();
+            
+            break;
+
+                 case 2:
+
+                     System.out.println("Por favor, ingresa los datos del cliente.");
+
+                     String id = cine.generarIdCliente();
+                     System.out.println("Ingresa el nombre del cliente: ");
+                     String nombreCliente= scanner.nextLine();
+                     System.out.println("Ingrese apellidos del cliente: ");
+                     String apellidos = scanner.nextLine();
+                     System.out.println("Ingrese su curp: ");
+                     String curp = scanner.nextLine();
+                     System.out.println("Ingrese su direccion: ");
+                     String direccion = scanner.nextLine();
+                     System.out.print("Fecha de nacimiento (yyyy-MM-dd): ");
+                     String fechaNacimiento = scanner.nextLine();
+                     LocalDate fechaNacimientoCliente = LocalDate.parse(fechaNacimiento);
+
+                     Cliente cliente = new Cliente(id,curp,nombreCliente,apellidos,direccion,fechaNacimientoCliente);
+
+                     System.out.println("Selecciona una sala:");
+                     cine.mostrarSalas();
+
+                     System.out.print("Ingresa el ID de la sala: ");
+                     String idSala = scanner.nextLine();
+                     Sala salaSeleccionada = cine.buscarSalaPorId(idSala);
+
+                     if (salaSeleccionada == null) {
+                         System.out.println("Sala no encontrada. Intenta de nuevo.");
+                         break;
+                     }
+
+                     // Comprar boletos
+                     cine.comprarBoletos(cliente, salaSeleccionada);
+                     break;
+
+                 case 3:
+            cine.mostrarProductosDulceria();
+            String opcionS = "S";
+            while (opcionS.equalsIgnoreCase("S")) {
+                System.out.print("Ingresa el ID del producto de dulcería que deseas comprar: ");
+                String idProducto = scanner.nextLine();
+
+                Producto productoSeleccionado = cine.buscarProductoPorId(idProducto);
+
+                if (productoSeleccionado != null) {
+                    cine.agregarProductoAdicional(productoSeleccionado);
+                    System.out.println("Producto añadido correctamente: " + productoSeleccionado.getNombre());
+                } else {
+                    System.out.println("Producto no encontrado. Intenta de nuevo.");
+                }
+
+                // Preguntar al usuario si desea agregar otro producto
+                System.out.print("¿Deseas agregar otro producto? (S/N): ");
+                opcionS = scanner.nextLine();
             }
+
+            System.out.println("Has terminado de agregar productos.");
+        break;
+        case 4:
+        cine.realizarPago();
+            break;
+        case 5:
+            System.out.println("Saliendo...");
+            break;
+        default:
+            System.out.println("Opción no válida. Inténtalo de nuevo.");
+    }
+}
+            
+
+            
         }
-    }
-
-    private void registrarCliente() {
-        System.out.println("Registro de Cliente:");
-
-        System.out.print("Ingrese su CURP: ");
-        String curp = scanner.nextLine();
-
-        System.out.print("Ingrese su nombre: ");
-        String nombre = scanner.nextLine();
-
-        System.out.print("Ingrese su apellido: ");
-        String apellidos = scanner.nextLine();
-
-        System.out.print("Ingrese su dirección: ");
-        String direccion = scanner.nextLine();
-
-        System.out.print("Ingrese su fecha de nacimiento (AAAA-MM-DD): ");
-        String fechaNacimientoStr = scanner.nextLine();
-        LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr);
-
-        Cliente nuevoCliente = new Cliente(curp, nombre, apellidos, direccion, fechaNacimiento);
-        cine.getListaUsuarios().add(nuevoCliente);
-
-        System.out.println("Cliente registrado exitosamente: " + nombre + " " + apellidos);
-    }
 }
