@@ -32,10 +32,7 @@ public class Menu {
             System.out.print("Ingrese contraseña: ");
             String contrasena = scanner.nextLine();
 
-            if (usuario.equals(USUARIO_ADMIN) && contrasena.equals(CONTRASEÑA_ADMIN)) {
-                mostrarMenuAdmin();
-                return;
-            } else if (usuario.equals(USUARIO_MEDICO) && contrasena.equals(CONTRASEÑA_MEDICO)) {
+            if (usuario.equals(USUARIO_MEDICO) && contrasena.equals(CONTRASEÑA_MEDICO)) {
                 MostrarMenuMedico();
                 return;
             } else if (usuario.equals(USUARIO_PACIENTE) && contrasena.equals(CONTRASEÑA_PACIENTE)) {

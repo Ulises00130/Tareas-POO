@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4736fe4a-8c59-4c31-884d-d242878edc0d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Tarea1Unidad3/src/hospital/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tarea1Unidad3/src/hospital/Hospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea1Unidad3/src/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tarea1Unidad3/src/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tarea2Unidad3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/consultas/Consulta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/consultas/utils/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/consultorios/Consultorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/hospital/Hospital.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/hospital/ValidadorHospital.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/menu/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/usuarios/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/usuarios/administrador/Administrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/usuarios/medicos/Medico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/usuarios/pacientes/Paciente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/src/usuarios/utils/Rol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tarea2Unidad3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tarea2Unidad3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/catalogopeliculas/CatalogoPeliculas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/catalogopeliculas/CatalogoPeliculas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/catalogopeliculas/Pelicula.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/catalogopeliculas/Pelicula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/cine/Cine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/cine/Cine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/dulceria/Dulceria.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/dulceria/Dulceria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/menu/MenuAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/menu/MenuAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/menu/MenuCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/menu/MenuCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/usuarios/clientes/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/src/usuarios/clientes/Cliente.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2nlwKPIhK9kqRW2VW0G5LS48Rkm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "ProyectoUnidad2Cinepolis",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4736fe4a-8c59-4c31-884d-d242878edc0d" name="Changes" comment="" />
+      <created>1729560905791</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729560905791</updated>
+      <workItem from="1729560907002" duration="48000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

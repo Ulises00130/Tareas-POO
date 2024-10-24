@@ -8,7 +8,6 @@ import usuarios.administrador.Administrador;
 import usuarios.utils.Rol;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Cine {
@@ -201,8 +200,10 @@ public class Cine {
 
             if (seleccionSala > 0 && seleccionSala <= listaSalas.size()) {
                 Sala salaSeleccionada = listaSalas.get(seleccionSala - 1);
+
                 // Asignar la película a la sala
                 salaSeleccionada.setPelicula(peliculaSeleccionada);
+                peliculaSeleccionada.setSalaAsignada(salaSeleccionada);  // Asignamos la sala a la película
                 System.out.println("Película '" + peliculaSeleccionada.getTitulo() + "' asignada a la Sala #" + salaSeleccionada.getNumeroSala());
             } else {
                 System.out.println("Selección de sala no válida.");
@@ -211,6 +212,17 @@ public class Cine {
             System.out.println("Selección de película no válida.");
         }
     }
+    public void mostrarPeliculasEnCartelera() {
+        if (listaPeliculas.isEmpty()) {
+            System.out.println("No hay películas en cartelera.");
+        } else {
+            System.out.println("Películas en cartelera:");
+            for (Pelicula pelicula : listaPeliculas) {
+                System.out.println(pelicula.getTitulo());
+            }
+        }
+    }
+
 
 
     public ArrayList<Pelicula> getListaPeliculas() {
@@ -227,20 +239,5 @@ public class Cine {
 
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
-    }
-
-
-    public Sala getSala(int numeroSala) {
-
-        return null;
-    }
-
-    public List<Sala> getSalasDisponibles(Pelicula peliculaSeleccionada) {
-
-        return List.of();
-    }
-
-    public Pelicula buscarPelicula(String tituloPelicula) {
-        return null;
     }
 }

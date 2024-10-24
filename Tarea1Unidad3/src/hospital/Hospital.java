@@ -50,7 +50,7 @@ public class Hospital {
         int anoActual=fecha.getYear();
         int mesActual= fecha.getMonthValue();
         int longitudPacientesMasUno=this.listaPacientes.size();
-        int numeroAleatorio= random.nextInt(1,1000);
+
         String id=String.format("P%d%d%d%d",anoActual,mesActual,longitudPacientesMasUno,numeroAleatorio);
         return id;
     }

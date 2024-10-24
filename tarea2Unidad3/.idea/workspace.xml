@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6528a84a-28de-4411-8598-89c45f7d6774" name="Changes" comment="" />
+    <list default="true" id="3c071e92-daf2-44d4-bb3a-56842aae02bf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/consultas/Consulta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/consultas/utils/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/consultorios/Consultorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/hospital/Hospital.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/hospital/ValidadorHospital.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/menu/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/usuarios/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/usuarios/administrador/Administrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/usuarios/medicos/Medico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/usuarios/pacientes/Paciente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src/usuarios/utils/Rol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,9 +29,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
+  &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="2nXsQa1DmCIhyVUai39N0RkvCyw" />
+  <component name="ProjectId" id="2nYAR7xSZs1ZUsf4jK2XWv181b3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,21 +39,22 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Tarea13/Unidad2",
+    "git-widget-placeholder": "Tarea2/Unidad3",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ulise/Documents/TareasPOO/tarea2Unidad3",
+    "last_opened_file_path": "C:/Users/ulise/Documents/TareasPOO/Tarea2Unidad3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/ulise/Documents/TareasPOO/tarea2Unidad3/src/Main.java",
+    "onboarding.tips.debug.path": "C:/Users/ulise/Documents/TareasPOO/Tarea2Unidad3/src/Main.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ulise\Documents\TareasPOO\tarea2Unidad3" />
+      <recent name="C:\Users\ulise\Documents\TareasPOO\Tarea2Unidad3" />
+      <recent name="C:\Users\ulise\Documents\TareasPOO\Tarea2Unidad3\src" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -49,13 +68,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6528a84a-28de-4411-8598-89c45f7d6774" name="Changes" comment="" />
-      <created>1729130742057</created>
+      <changelist id="3c071e92-daf2-44d4-bb3a-56842aae02bf" name="Changes" comment="" />
+      <created>1729139627184</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1729130742057</updated>
-      <workItem from="1729130743407" duration="149000" />
-      <workItem from="1729138927869" duration="372000" />
+      <updated>1729139627184</updated>
+      <workItem from="1729139628093" duration="164000" />
+      <workItem from="1729139802151" duration="393000" />
     </task>
     <servers />
   </component>

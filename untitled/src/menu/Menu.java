@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class Menu {
     private Scanner scanner = new Scanner(System.in);
-    private usuarios.clientes.Cliente Cliente;
+    private Cine cine = new Cine();
 
     public void mostrarMenuPrincipal() {
-        MenuAdmin menuAdmin = new MenuAdmin();
-
+        MenuAdmin menuAdmin = new MenuAdmin(cine);
+        MenuCliente menuCliente = new MenuCliente(cine);
         System.out.println("-----BIENVENIDO-------");
         System.out.println("Seleccione una opcion");
         System.out.println("1.-Iniciar sesion como cliente");
@@ -24,16 +24,12 @@ public class Menu {
             opcion = scanner.nextInt();
             switch(opcion) {
                 case 1:
-
-                    MenuCliente menuCliente = new MenuCliente(Cliente, new Cine());
                     menuCliente.menuCliente();
                     break;
                 case 2:
                     menuAdmin.menuAdmin();
                     break;
                 case 3:
-
-
                     break;
 
                 default:
@@ -42,6 +38,4 @@ public class Menu {
             }
         }
     }
-
-
 }

@@ -1,48 +1,50 @@
 package menu;
 
-import catalogopeliculas.Pelicula;
 import cine.Cine;
-import salas.Sala;
+import dulceria.Dulceria;
 import usuarios.clientes.Cliente;
 
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class MenuCliente {
     private Scanner scanner = new Scanner(System.in);
     private Cine cine;
-    private Cliente cliente;
 
-    public MenuCliente(Cliente cliente, Cine cine) {
-        this.cliente = cliente;
-        this.cine = cine;
+
+
+    // Modificación: Agregar un constructor que reciba la instancia de Cine
+    public MenuCliente(Cine cine) {
+        this.cine = cine; // Guardamos la instancia de Cine
     }
 
-
-
     public void menuCliente() {
+        Dulceria dulceria = new Dulceria();
         int opcion = 0;
-        while (opcion != 4) {
-            System.out.println("\nMenú Cliente");
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Ver catálogo de películas");
-            System.out.println("2. Reservar boletos");
-            System.out.println("3. Comprar boletos");
-            System.out.println("4. Salir");
+        while (opcion != 5) {
+            System.out.println("\nMenú Cliente:");
+            System.out.println("1. Registrarse como cliente");
+            System.out.println("2. Comprar boletos");
+            System.out.println("3. Ver películas en cartelera");
+            System.out.println("4. Comprar en dulcería");
+            System.out.println("5. Salir");
             opcion = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Limpiar el buffer
 
             switch (opcion) {
                 case 1:
-                    verCatalogoPeliculas();
+                    registrarCliente();
                     break;
                 case 2:
-                    reservarBoletos();
+                    // Método para comprar boletos
                     break;
                 case 3:
-                    comprarBoletos();
+                    cine.mostrarPeliculasEnCartelera();
                     break;
                 case 4:
+                    dulceria.comprarProductos();
+                    break;
+                case 5:
                     System.out.println("Saliendo del menú cliente...");
                     break;
                 default:
@@ -52,114 +54,28 @@ public class MenuCliente {
         }
     }
 
-    private void verCatalogoPeliculas() {
-        System.out.println("Catálogo de películas disponibles:");
+    private void registrarCliente() {
+        System.out.println("Registro de Cliente:");
 
-        // Obtener la lista de películas del cine
-        List<Pelicula> peliculas = cine.getListaPeliculas();
+        System.out.print("Ingrese su CURP: ");
+        String curp = scanner.nextLine();
 
-        // Verificar si hay películas disponibles
-        if (peliculas.isEmpty()) {
-            System.out.println("No hay películas disponibles en el catálogo.");
-            return;
-        }
+        System.out.print("Ingrese su nombre: ");
+        String nombre = scanner.nextLine();
 
-        // Mostrar cada película en el catálogo
-        for (Pelicula pelicula : peliculas) {
-            System.out.println(pelicula.toString());
-        }
-    }
+        System.out.print("Ingrese su apellido: ");
+        String apellidos = scanner.nextLine();
 
-    private void reservarBoletos() {
-        System.out.println("Reservar boletos...");
+        System.out.print("Ingrese su dirección: ");
+        String direccion = scanner.nextLine();
 
-        // Paso 1: Mostrar el catálogo de películas
-        verCatalogoPeliculas();
+        System.out.print("Ingrese su fecha de nacimiento (AAAA-MM-DD): ");
+        String fechaNacimientoStr = scanner.nextLine();
+        LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr);
 
-        // Paso 2: Seleccionar una película
-        System.out.print("Seleccione el título de la película: ");
-        String tituloPelicula = scanner.nextLine();
-        Pelicula peliculaSeleccionada = cine.buscarPelicula(tituloPelicula);
+        Cliente nuevoCliente = new Cliente(curp, nombre, apellidos, direccion, fechaNacimiento);
+        cine.getListaUsuarios().add(nuevoCliente);
 
-        if (peliculaSeleccionada == null) {
-            System.out.println("Película no encontrada.");
-            return;
-        }
-
-        // Paso 3: Mostrar salas disponibles
-        System.out.println("Salas disponibles para " + peliculaSeleccionada.getTitulo() + ":");
-        List<Sala> salasDisponibles = cine.getSalasDisponibles(peliculaSeleccionada);
-        for (Sala sala : salasDisponibles) {
-            System.out.println("Sala " + sala.getNumeroSala() + " - Capacidad: " + sala.getCapacidad());
-        }
-
-        // Paso 4: Seleccionar una sala
-        System.out.print("Seleccione el número de la sala: ");
-        int numeroSala = scanner.nextInt();
-        scanner.nextLine();
-        Sala salaSeleccionada = cine.getSala(numeroSala);
-
-        if (salaSeleccionada == null) {
-            System.out.println("Sala no encontrada.");
-            return;
-        }
-
-        // Mostrar el mapa de asientos
-        salaSeleccionada.mostrarMapaAsientos();
-
-        // Paso 5: Seleccionar asientos
-        System.out.print("Ingrese la cantidad de asientos a reservar: ");
-        int cantidadAsientos = scanner.nextInt();
-        scanner.nextLine();
-
-        for (int i = 0; i < cantidadAsientos; i++) {
-            System.out.print("Seleccione el ID del asiento (Ejemplo: A1): ");
-            String idAsiento = scanner.nextLine();
-
-            // Reservar el asiento
-            salaSeleccionada.reservarAsiento(idAsiento);
-        }
-
-        System.out.println("Reservas completadas con éxito.");
-    }
-
-    private void comprarBoletos() {
-        System.out.println("Comprar boletos...");
-
-        // Paso 1: Mostrar el catálogo de películas
-        verCatalogoPeliculas();
-
-        // Paso 2: Seleccionar una película
-        System.out.print("Seleccione el título de la película: ");
-        String tituloPelicula = scanner.nextLine();
-        Pelicula peliculaSeleccionada = cine.buscarPelicula(tituloPelicula);
-
-        if (peliculaSeleccionada == null) {
-            System.out.println("Película no encontrada.");
-            return;
-        }
-
-        // Paso 3: Mostrar salas disponibles
-        System.out.println("Salas disponibles para " + peliculaSeleccionada.getTitulo() + ":");
-        List<Sala> salasDisponibles = cine.getSalasDisponibles(peliculaSeleccionada);
-        for (Sala sala : salasDisponibles) {
-            System.out.println("Sala " + sala.getNumeroSala() + " - Capacidad: " + sala.getCapacidad());
-        }
-
-        // Paso 4: Seleccionar una sala
-        System.out.print("Seleccione el número de la sala: ");
-        int numeroSala = scanner.nextInt();
-        scanner.nextLine();
-        Sala salaSeleccionada = cine.getSala(numeroSala);
-
-        if (salaSeleccionada == null) {
-            System.out.println("Sala no encontrada.");
-            return;
-        }
-
-        // Mostrar el mapa de asientos
-        salaSeleccionada.mostrarMapaAsientos();
-
+        System.out.println("Cliente registrado exitosamente: " + nombre + " " + apellidos);
     }
 }
-
